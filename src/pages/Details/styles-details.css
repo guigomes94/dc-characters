@@ -1,0 +1,50 @@
+.character-info {
+    padding: 5%;
+    margin: 0;
+    background-color: black;
+    color: #fff;
+}
+
+.character-info .info {
+    background-color: #49496F;
+    border-radius: 12px;
+    border: 1px solid azure;
+}
+
+.character-info h1, h2 {
+    padding-top: 2%;
+    text-align: center;
+}
+
+.character-info .info h2, p {
+    font-size: 0.75em;
+}
+
+.character-info .description h1 {
+    text-align: left;
+}
+
+.character-info .description p {
+    font-size: 1em;
+}
+
+@media screen and (min-width: 768px) {
+    .character-info h1 {
+        font-size: 2em;
+    }
+
+    .character-info .info h2, p {
+        font-size: 1.5em;
+    }
+
+    .character-info .description p {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .info {
+        width: 760px;
+        margin: auto;
+    }
+}

@@ -1,0 +1,149 @@
+.character-list {
+    max-width: 100%;
+    padding: 5% 0 5% 0;
+    background-color: black;
+    color: #FFF;
+}
+
+.character-list .search-bar label{
+    font-size: 0.75em;
+    display: flex;
+    justify-content: center;
+}
+
+.character-list .search-bar label input {
+    border: none;
+    border-radius: 16px;
+    background-color: #DDD;
+}
+
+.character-list .filter-sorted-menu {
+    display: none;
+}
+
+.character-list article {
+    background-color: #49496F;
+    width: 90%;
+    padding: 5%;
+    margin: 5% auto 5% auto;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #DDD;
+    border-radius: 5px;
+}
+
+.character-list article img {
+    width: 100%;
+    height: 300px;
+    margin: auto;
+}
+
+.character-list article strong, h2, p, a {
+    padding: 1%;
+    align-self: flex-end;
+    color: azure;
+}
+
+.character-list article p {
+    font-size: 1em;
+}
+
+.character-list article a {
+    background-color: #ACACB8;
+    border-radius: 12px;
+    border: 2px solid azure;
+    padding: 2%;
+    opacity: 0.75;
+    color: azure;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.character-list article a:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .character-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .character-list .search-bar {
+        width: 100%;
+    }
+
+    .character-list .search-bar label{
+        font-size: 1.5em;
+    }
+
+    .character-list .character-card {
+        margin-top: 2%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .character-list .character-card article {
+        width: 40%;
+        height: 520px;
+        margin: 2% auto 2% auto;
+    }
+
+    .character-list .character-card article p {
+        padding-bottom: 4%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .character-list .filter-sorted-menu {
+        padding: 2%;
+        margin: 5% auto 5% 0;
+        background-color: #49496F;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+    }
+
+    .character-list .filter-sorted-menu h2{
+        color: #dadada;
+        padding: 4%;
+        display: flex;
+        align-self: center;
+    }
+
+    .character-list .filter-sorted-menu select {
+        width: 50%;
+        align-self: center;
+    }
+
+    .character-list .skill-filter {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .character-list .alignment-filter {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .character-list .gender-filter {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .character-list .character-card {
+        width: 70%;
+    }
+}
+
+
+@media screen and (min-width: 1280px) {
+    .character-list .filter-sorted-menu {
+        width: 380px;
+    }
+
+    .character-list .character-card article {
+        width: 30%;
+    }
+}
