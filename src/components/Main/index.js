@@ -6,11 +6,13 @@ import './styles.css';
 
 export default function Main() {
     const [data, setData] = useState([])
+    const [characters, setCharacters] = useState([])
     useEffect(() => {
         axios
             .get('https://dc-characters-api.herokuapp.com/characters')
             .then(res => {
                 setData(res.data.docs)
+                setCharacters(res.data.docs)
             })}, [])
     
     const filterSkill = (obj) => {
@@ -75,8 +77,10 @@ export default function Main() {
             return res;
         } return value;
     }
-        
-    const characters = data;
+
+    const teste = () => {
+        setCharacters([data[5]])
+    }
         
     return (
         <div className="character-list">
@@ -90,22 +94,22 @@ export default function Main() {
                     <h2>ORDER BY:</h2>
                     <button>Name</button>
                     <button>Height</button>
-                    <button>Weight</button>
+                    <button onClick={ teste }>Weight</button>
                     <button>Creation Year</button>
                 </div>
                 <div className="skill-filter">
                     <h2>Skills</h2>
-                    {filterSkill(characters).map( tag =>
+                    {filterSkill(data).map( tag =>
                         (<label key={tag}><input type="checkbox" id={`${tag}`}/> {tag}</label>))}
                 </div>
                 <div className="alignment-filter">
                     <h2>Alignment</h2>
-                    {filterAlign(characters).map( tag =>
+                    {filterAlign(data).map( tag =>
                         (<label key={tag}><input type="checkbox" id={`${tag}`}/> {styleName(tag)}</label>))}
                 </div>
                 <div className="gender-filter">
                     <h2>Gender</h2>
-                    {filterGender(characters).map( tag =>
+                    {filterGender(data).map( tag =>
                         (<label key={tag}><input type="checkbox" id={`${tag}`}/> {styleName(tag)}</label>))}
                 </div>
             </div>
