@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
-import './styles-details.css';
+import './styles.css';
 
 export default class Character extends Component {
     state = {

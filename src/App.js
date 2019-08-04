@@ -6,13 +6,13 @@ import Header from './components/Header';
 import Routes from './routes';
 import Footer from './components/Footer';
 
-const App = () => (
-  <div className="App">
+function App() {
+  return (<div className="App">
     <Navbar />
     <Header />
     <Routes />
     <Footer />
   </div>
-);
+  )};
 
 export default App;

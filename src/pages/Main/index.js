@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
-import './styles-main.css';
+import './styles.css';
 
 
 export default class Main extends Component {
     state = {
-        characters: [].sort((a, b) => a.name - b.name),
+        characters: [],
     };
     
     componentDidMount() {
@@ -133,9 +133,7 @@ export default class Main extends Component {
                     <article key={character._id}>
                         <img alt="character" src={ require(`../../img/characters/${character.name}.jpg`) }/>
                         <strong>{this.styleName(character.name)}</strong>
-                        <h2>{this.checkName(this.styleName(character.real_name), this.styleName(character.name))}</h2>
-                        <p>{this.checkValue(character.height)} cm, {this.checkValue(character.weight)} kg</p>
-                        <Link to={`/character/${character._id}`}>More...</Link>
+                        <Link to={`/character/${character._id}`}>Info</Link>
                     </article>))}
                 </div>
             </div>
