@@ -1,6 +1,5 @@
 .character-info {
     padding: 5%;
-    margin: 0;
     background-color: black;
     color: #fff;
 }
@@ -9,16 +8,34 @@
     background-color: #49496F;
     border-radius: 12px;
     border: 1px solid azure;
+    text-align: center;
+    margin: auto;
 }
 
 .character-info h1, h2 {
     padding-top: 2%;
-    text-align: center;
 }
 
 .character-info .info h2, p {
     font-size: 0.75em;
 }
+
+.character-info .skills {
+    background-color: #49496F;
+    border-radius: 12px;
+    border: 1px solid azure;
+    text-align: center;
+    margin: 2% auto;
+}
+
+.character-info .skills h1 {
+    padding-top: 2%;
+}
+
+.character-info .skills li {
+    font-size: 0.75em;
+}
+
 
 .character-info .description h1 {
     text-align: left;
@@ -37,12 +54,36 @@
         font-size: 1.5em;
     }
 
+    .character-info .skills h1 {
+        font-size: 2em;
+    }
+
+    .character-info .skills li {
+        font-size: 1.5em;
+    }
+
     .character-info .description p {
         font-size: 1.2em;
     }
 }
 
 @media screen and (min-width: 1024px) {
+    .character-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .character-info .info {
+        width: 400px;
+        height: 250px;
+    }
+
+    .character-info .skills {
+        width: 400px;
+        height: 250px;
+    }
+
     .info {
         width: 760px;
         margin: auto;

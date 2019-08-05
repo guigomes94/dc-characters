@@ -4,13 +4,13 @@ import axios from 'axios';
 import './styles.css';
 
 export default function Character({ match }) {
-    const [character, setCharacter] = useState([])
+    const [character, setCharacter] = useState('')
     useEffect(() => {
         axios
             .get(`https://dc-characters-api.herokuapp.com/characters/admin/${match.params.id}`)
             .then(res => {
                 setCharacter(res.data)
-            })}, [])
+            })}, [match.params.id])
 
     const capitalize = (arr) => {
         let newArray = [];
@@ -53,6 +53,17 @@ export default function Character({ match }) {
         return value;
     };
 
+    const skills = (arr) => {
+        let res = String(arr).split(',')
+
+        return (
+            res.map(skill => 
+            <div key={skill}>
+                <li>{skill}</li>
+            </div>)
+        )
+    }
+
     return (
         <div className="character-info">
             <div className="info">
@@ -62,9 +73,13 @@ export default function Character({ match }) {
                 <p>Height: {checkValue(character.height)} cm, Weight: {checkValue(character.weight)} kg</p>
                 <p>Creation Year: {character.first_appeared}</p>
             </div>
+            <div className="skills">
+                <h1>Powers and Abilities</h1>
+                {skills(character.skills)}
+            </div>
             <div className="description">
                 <h1>About:</h1>
-                    <p>{character.description}</p>
+                <p>{character.description}</p>
             </div>
         </div>)
 }

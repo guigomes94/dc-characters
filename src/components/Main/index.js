@@ -62,59 +62,74 @@ export default function Main() {
             return res.join('-');
         }
     }
-        
-    const checkName = (realname, name) => {
-        if (realname === name || realname === 'Unknown') {
-            return '';
-        } else {
-            return realname;
-        }
-    }
-        
-    const checkValue = (value) => {
-        let res = 'undef.'
-        if (value === 0) {
-            return res;
-        } return value;
-    }
 
     const teste = () => {
-        setCharacters([data[5]])
+        setCharacters([data[6]])
+    }
+
+    const home = () => {
+        setCharacters(data)
+    }
+
+    const filterBySkill = (tag) => {
+        let newlist = []
+        for (let character of characters) {
+            for (let skill of character.skills) {
+                if (skill === tag) {
+                    newlist.push(character)
+                }
+            }
+        }
+        setCharacters(newlist)
+    }
+
+    const filterByAlign = (tag) => {
+        let newlist = []
+        newlist = characters.filter(obj => obj.alignment === tag)
+        setCharacters(newlist)
+    }
+
+    const filterByGender = (tag) => {
+        let newlist = []
+        newlist = characters.filter(obj => obj.gender === tag)
+        setCharacters(newlist)
     }
         
     return (
         <div className="character-list">
             <div className="search-bar">
+                <h1 onClick={ home }>Home</h1>
                 <label>
                     Search: <input type="text" name="search" placeholder="Type here..."/>   
                 </label>
+                <button>GO</button>
             </div>
             <div className="filter-sorted-menu">
                 <div className="orderby">
-                    <h2>ORDER BY:</h2>
+                    <h2>Order By</h2>
                     <button>Name</button>
-                    <button>Height</button>
-                    <button onClick={ teste }>Weight</button>
+                    <button onClick={ teste }>Height</button>
+                    <button>Weight</button>
                     <button>Creation Year</button>
                 </div>
                 <div className="skill-filter">
                     <h2>Skills</h2>
                     {filterSkill(data).map( tag =>
-                        (<label key={tag}><input type="checkbox" id={`${tag}`}/> {tag}</label>))}
+                        (<label key={tag}><input type="checkbox" onChange={ evt => filterBySkill(evt.target.id) } id={`${tag}`}/> {tag}</label>))}
                 </div>
                 <div className="alignment-filter">
                     <h2>Alignment</h2>
                     {filterAlign(data).map( tag =>
-                        (<label key={tag}><input type="checkbox" id={`${tag}`}/> {styleName(tag)}</label>))}
+                        (<label key={tag}><input type="checkbox" onChange={ evt => filterByAlign(evt.target.id) } id={`${tag}`}/> {styleName(tag)}</label>))}
                 </div>
                 <div className="gender-filter">
                     <h2>Gender</h2>
                     {filterGender(data).map( tag =>
-                        (<label key={tag}><input type="checkbox" id={`${tag}`}/> {styleName(tag)}</label>))}
+                        (<label key={tag}><input type="checkbox" onChange={ evt => filterByGender(evt.target.id) } id={`${tag}`}/> {styleName(tag)}</label>))}
                 </div>
             </div>
             <div className="character-card">
-            {characters.map( character => 
+            {characters.map(character => 
                 (<article key={character._id}>
                     <img alt="character" src={ require(`../../img/characters/${character.name}.jpg`) }/>
                     <strong>{styleName(character.name)}</strong>
