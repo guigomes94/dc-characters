@@ -7,6 +7,7 @@ import './styles.css';
 export default function Main() {
     const [data, setData] = useState([])
     const [characters, setCharacters] = useState([])
+    const [orderby, setOrderby] = useState('name')
     useEffect(() => {
         axios
             .get('https://dc-characters-api.herokuapp.com/characters')
@@ -15,6 +16,55 @@ export default function Main() {
                 setCharacters(res.data.docs)
             })}, [])
     
+    
+    const sortObj = (condition) => {
+        if (condition === 'name') {
+            let sorted = characters.sort(function(a, b) {
+                if(a.name < b.name) return -1
+                if(a.name > b.name) return 1
+                return 0
+            })
+            return sorted
+        } else if (condition === 'height') {
+            let sorted = characters.sort(function(a, b) {
+                if(a.height < b.height) return -1
+                if(a.height > b.height) return 1
+                return 0
+            })
+            return sorted
+        } else if (condition === 'weight') {
+            let sorted = characters.sort(function(a, b) {
+                if(a.weight < b.weight) return -1
+                if(a.weight > b.weight) return 1
+                return 0
+            })
+            return sorted
+        } else if (condition === 'first_appeared') {
+            let sorted = characters.sort(function(a, b) {
+                if(a.first_appeared < b.first_appeared) return -1
+                if(a.first_appeared > b.first_appeared) return 1
+                return 0
+            })
+            return sorted
+        }
+    }
+
+    const orderbyName = () => {
+        setOrderby('name')
+    }
+
+    const orderbyHeight = () => {
+        setOrderby('height')
+    }
+
+    const orderbyWeight = () => {
+        setOrderby('weight')
+    }
+
+    const orderbyYear = () => {
+        setOrderby('first_appeared')
+    }
+            
     const filterSkill = (obj) => {
         let tags = [];
         for (let i = 0; i < obj.length; i++) {
@@ -63,10 +113,6 @@ export default function Main() {
         }
     }
 
-    const teste = () => {
-        setCharacters([data[6]])
-    }
-
     const home = () => {
         setCharacters(data)
     }
@@ -94,23 +140,19 @@ export default function Main() {
         newlist = characters.filter(obj => obj.gender === tag)
         setCharacters(newlist)
     }
-        
+       
     return (
         <div className="character-list">
             <div className="search-bar">
                 <h1 onClick={ home }>Home</h1>
-                <label>
-                    Search: <input type="text" name="search" placeholder="Type here..."/>   
-                </label>
-                <button>GO</button>
             </div>
             <div className="filter-sorted-menu">
                 <div className="orderby">
                     <h2>Order By</h2>
-                    <button>Name</button>
-                    <button onClick={ teste }>Height</button>
-                    <button>Weight</button>
-                    <button>Creation Year</button>
+                    <button onClick={ orderbyName }>Name</button>
+                    <button onClick={ orderbyHeight }>Height</button>
+                    <button onClick={ orderbyWeight }>Weight</button>
+                    <button onClick={ orderbyYear }>Creation Year</button>
                 </div>
                 <div className="skill-filter">
                     <h2>Skills</h2>
@@ -129,7 +171,7 @@ export default function Main() {
                 </div>
             </div>
             <div className="character-card">
-            {characters.map(character => 
+            {sortObj(orderby).map(character => 
                 (<article key={character._id}>
                     <img alt="character" src={ require(`../../img/characters/${character.name}.jpg`) }/>
                     <strong>{styleName(character.name)}</strong>
@@ -138,4 +180,3 @@ export default function Main() {
             </div>
         </div>)
 }
-

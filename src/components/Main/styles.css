@@ -19,15 +19,8 @@
     padding: 2%;
 }
 
-.character-list .search-bar label input {
-    background-color: #DDD;
-    border: 1px solid #49496F;
-}
-
-.character-list .search-bar button {
-    background-color: #DDD;
-    border: 1px solid #49496F;
-    color: #49496F;
+.character-list h1:hover {
+    cursor: pointer;
 }
 
 .character-list .filter-sorted-menu {
@@ -92,14 +85,6 @@
         font-size: 1.5em;
     }
 
-    .character-list .search-bar label{
-        font-size: 1.5em;
-    }
-
-    .character-list .search-bar button {
-        font-size: 1.5em;
-    }
-
     .character-list .character-card {
         margin-top: 2%;
         display: flex;
@@ -144,6 +129,10 @@
         display: flex;
         align-self: center;
         justify-content: center;
+    }
+
+    .character-list .search-bar {
+        justify-content: flex-start;
     }
 
     .character-list .filter-sorted-menu .orderby {
