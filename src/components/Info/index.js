@@ -62,7 +62,7 @@ export default function Character({ match }) {
                 <h1>{styleName(character.name)}</h1>
                 <h2>{checkName(styleName(character.real_name), styleName(character.name))}</h2>
                 <p>Gender: {styleName(character.gender)}</p>
-                <p>Height: {checkValue(character.height)} cm, Weight: {checkValue(character.weight)} kg</p>
+                <p>Height: { character.height } cm, Weight: { character.weight } kg</p>
                 <p>Creation Year: {character.first_appeared}</p>
             </div>
             <div className="skills">
