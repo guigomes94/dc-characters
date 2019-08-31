@@ -45,14 +45,6 @@ export default function Character({ match }) {
         }
     };
 
-    const checkValue = (value) => {
-        let res = 'undefined'
-        if (value === 0) {
-            return res;
-        }
-        return value;
-    };
-
     const skills = (arr) => {
         let res = String(arr).split(',')
 
