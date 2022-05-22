@@ -8,6 +8,7 @@ export default function Main() {
     const [data, setData] = useState([])
     const [characters, setCharacters] = useState([])
     const [orderby, setOrderby] = useState('name')
+
     useEffect(() => {
         axios
             .get('https://dc-characters-api.herokuapp.com/characters')
@@ -127,6 +128,7 @@ export default function Main() {
             }
         }
         setCharacters(newlist)
+        
     }
 
     const filterByAlign = (tag) => {
@@ -153,6 +155,10 @@ export default function Main() {
                     <button onClick={ orderbyHeight }>Height</button>
                     <button onClick={ orderbyWeight }>Weight</button>
                     <button onClick={ orderbyYear }>Creation Year</button>
+                </div>
+                <br />
+                <div className="orderby">
+                    <button onClick={home}>Clean filters</button>
                 </div>
                 <div className="skill-filter">
                     <h2>Skills</h2>
